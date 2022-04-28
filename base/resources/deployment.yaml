@@ -19,7 +19,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: DEV_MGMT_URL
-          value: "http://iot-device-mgmt-svc.$(POD_NAMESPACE).svc.cluster.local"
+          value: "http://iot-device-mgmt.$(POD_NAMESPACE).svc.cluster.local"
         - name: MQTT_HOST
           valueFrom:
             secretKeyRef:
