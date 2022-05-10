@@ -19,7 +19,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: DEV_MGMT_URL
-          value: http://iot-device-mgmt.$(POD_NAMESPACE).svc.cluster.local
+          value: http://iot-device-mgmt
         - name: MQTT_HOST
           valueFrom:
             secretKeyRef:
@@ -43,7 +43,7 @@ spec:
         - name: RABBITMQ_DISABLED
           value: "true"
         - name: MSG_FWD_ENDPOINT
-          value: http://iot-agent.$(POD_NAMESPACE).svc.cluster.local/api/v0/messages
+          value: http://iot-agent/api/v0/messages
         image: ghcr.io/diwise/iot-agent:changeme
         imagePullPolicy: IfNotPresent
         livenessProbe:
