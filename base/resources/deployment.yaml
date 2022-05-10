@@ -40,10 +40,10 @@ spec:
             secretKeyRef:
               name: authn-mqtt
               key: mqtt-password
-        - name: RABBITMQ_DISABLED
-          value: "true"
         - name: MSG_FWD_ENDPOINT
           value: http://iot-agent/api/v0/messages
+        - name: RABBITMQ_HOST
+          value: rabbitmq
         image: ghcr.io/diwise/iot-agent:changeme
         imagePullPolicy: IfNotPresent
         livenessProbe:
