@@ -25,11 +25,6 @@ spec:
             secretKeyRef:
               name: authn-mqtt
               key: mqtt-host
-        - name: MQTT_TOPIC_0
-          valueFrom:
-            secretKeyRef:
-              name: authn-mqtt
-              key: mqtt-topic
         - name: MQTT_USER
           valueFrom:
             secretKeyRef:
