@@ -66,6 +66,9 @@ spec:
           httpGet:
             path: /health
             port: default-port
+        volumeMounts:
+        - mountPath: /opt/diwise/config
+          name: conf-volume
       serviceAccountName: iot-agent
       volumes:
         - name: conf-volume
