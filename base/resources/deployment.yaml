@@ -67,3 +67,7 @@ spec:
             path: /health
             port: default-port
       serviceAccountName: iot-agent
+      volumes:
+        - name: conf-volume
+          configMap:
+            name: iot-agent-cfg-cm
