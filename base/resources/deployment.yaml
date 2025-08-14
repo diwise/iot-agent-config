@@ -50,10 +50,6 @@ spec:
           value: rabbitmq
         image: ghcr.io/diwise/iot-agent:changeme
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: default-port
         name: iot-agent
         ports:
           - containerPort: 8080
