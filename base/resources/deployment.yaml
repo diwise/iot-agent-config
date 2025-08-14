@@ -25,6 +25,8 @@ spec:
             resourceFieldRef:
               containerName: iot-agent
               resource: limits.memory
+        - name: CONTROL_PORT
+          value: "8000"              
         - name: DEV_MGMT_URL
           value: http://iot-device-mgmt
         - name: MQTT_HOST
@@ -54,20 +56,31 @@ spec:
             port: default-port
         name: iot-agent
         ports:
-        - containerPort: 8080
-          name: default-port
-          protocol: TCP
+          - containerPort: 8080
+            name: default-port
+            protocol: TCP
+          - containerPort: 8000
+            name: control-port
+            protocol: TCP
+        startupProbe:
+          httpGet:
+            path: /healthz
+            port: control-port
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: control-port
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: control-port
         resources:
           limits:
             cpu: 250m
             memory: 512Mi
           requests:
             cpu: 50m
-            memory: 100Mi
-        startupProbe:
-          httpGet:
-            path: /health
-            port: default-port
+            memory: 100Mi            
         volumeMounts:
         - mountPath: /opt/diwise/config
           name: conf-volume
